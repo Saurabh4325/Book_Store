@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>editbook</title>
+</head>
+<body>
+    <form action="/books/edit/<%= userdata._id %>" method="post">
+        <label for="">title</label>
+        <input type="text" name="name" id="title" value="<%= userdata.title %>"><br>
+        <label for="">author</label>
+        <input type="text" name="authorname" id="author" value="<%= userdata.author %>"><br>
+        <label for="">publish year</label>
+        <input type="number" name="publishyear" id="publish" value="<%= userdata.publish %>"><br>
+        <button>update</button>
+    </form>
+
+    <script src="/javascripts/createBook.js"></script>
+</body>
+</html>

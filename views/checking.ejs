@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POST Request</title>
+</head>
+<body>
+  <h1>POST Request</h1>
+  <div>
+    <label for="inputData">Enter Data:</label>
+    <input type="text" id="inputData">
+    <button onclick="sendData()">Send Data</button>
+  </div>
+
+  <script>
+    function sendData() {
+      const url = '/books/data';
+      const data = { key: document.getElementById('inputData').value };
+
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.text(); // Parse the response body as text
+      })
+      .then(response => {
+        console.log('Response:', response); // Handle the response
+      })
+      .catch(error => {
+        console.error('There was a problem with the POST request:', error);
+      });
+    }
+  </script>
+</body>
+</html>
